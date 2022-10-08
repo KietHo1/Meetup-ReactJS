@@ -16,8 +16,8 @@ function Todo(props) {
           Delete
         </button>
       </div>
-      <Modal />
-      <Backdrop />
+      {modalIsOpen && <Modal />}
+      {modalIsOpen && <Backdrop />}
     </div>
   );
 }

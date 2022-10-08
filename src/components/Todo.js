@@ -1,7 +1,11 @@
+import { useState } from "react";
+import Modal from "./Modal";
+import Backdrop from "./Backdrop";
 function Todo(props) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   function deleteHandle() {
-    console.log("Clicked!");
-    console.log(props.text);
+    setModalIsOpen(true);
   }
   return (
     <div className="card">
@@ -12,6 +16,8 @@ function Todo(props) {
           Delete
         </button>
       </div>
+      <Modal />
+      <Backdrop />
     </div>
   );
 }

@@ -23,14 +23,29 @@ const DUMMY_DATA = [
 
 function AllMeetupsPage() {
   const [isLoading, setIsLoading] = useState(true);
-  const useState([]);
-  fetch("https://react-meetup-13de6-default-rtdb.firebaseio.com/meetups.json")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      setIsLoading(false);
-    });
+  const [loadedMeetups, setLoadedMeetups] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("https://react-meetup-13de6-default-rtdb.firebaseio.com/meetups.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const meetups = [];
+        for (const key in data) {
+          const meetup = {
+            id: key,
+            ...data[key],
+          };
+
+          meetups.push();
+        }
+
+        setIsLoading(false);
+        setLoadedMeetups(data);
+      });
+  }, [setIsLoading, setLoadedMeetups]);
 
   if (isLoading) {
     return (
